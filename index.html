@@ -1,0 +1,137 @@
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=11" />
+	<title>会员盒子 http://vipbox.ml 爱奇艺 腾讯 优酷 VIP视频免费观看</title>
+
+		<script language="javascript" type="text/javascript">
+		//倒计时
+		window.onload = function(){
+			var i = 3;
+			var out=document.getElementById('out');
+			var timer = setInterval(function(){
+				if(i== -1){
+				}else{
+				out.innerHTML=i;
+				--i;
+				}
+			},1000);
+			}
+			//判断微信
+			function is_weixin() {
+				var ua = navigator.userAgent.toLowerCase();
+				if (ua.match(/MicroMessenger/i) == "micromessenger") {
+					return true;
+				} else {
+					return false;
+				}
+			}
+			var isWeixin = is_weixin();
+			var winHeight = typeof window.innerHeight != 'undefined' ? window.innerHeight: document.documentElement.clientHeight;
+			console.log(winHeight);
+			function loadHtml() {
+				var div = document.createElement('div');
+				div.id = 'weixin-tip';
+				div.innerHTML = '<p><img src="/img/01.png"/></p>';
+				//微信二维码 <img src="https://raw.githubusercontent.com/dylanbai8/fuckvip/master/docs/02.png"/><img src="/img/03.png"/>
+				document.body.appendChild(div);
+			}
+			function loadStyleText(cssText) {
+				var style = document.createElement('style');
+				style.rel = 'stylesheet';
+				style.type = 'text/css';
+				try {
+					style.appendChild(document.createTextNode(cssText));
+				} catch(e) {
+					style.styleSheet.cssText = cssText;
+				}
+				var head = document.getElementsByTagName("head")[0];
+				head.appendChild(style);
+			}
+			var cssText = "#weixin-tip{position: fixed; left:0; top:0; background: rgba(0,0,0,1); filter:alpha(opacity=80); width: 100%; height:100%; z-index: 100;} #weixin-tip p{text-align: center; margin-top: 10%; padding:0 5%;}";
+			if (isWeixin) {
+				loadHtml();
+				loadStyleText(cssText);
+			} else {
+				//视频解析接口
+				//setTimeout(function () { this.location.href = "http://mv-vipbox.eu5.net/api.php?url=" + getParams('url') },3000);
+				prompt("微信关注 “会员盒子” 发现更多好视频！","会员盒子");
+			}
+			function getParams(paras) {
+				var url = decodeURI(location.href);
+				var paraString = url.substring(url.indexOf("?") + 1, url.length).split("&");
+				var returnValue;
+				for (i = 0; i < paraString.length; i++) {
+					var tempParas = paraString[i].split('=')[0];
+					var parasValue = paraString[i].substring(paraString[i].indexOf("=") + 1);
+					if (tempParas === paras) returnValue = parasValue;
+				}
+				if (typeof(returnValue) == "undefined") {
+					return "";
+				} else {
+					return returnValue;
+				}
+			}
+		</script>
+		
+	<script language="javascript" type="text/javascript">
+		function onPlay(){
+				var oJK = document.getElementById("jk");
+				var sJK=oJK.options[oJK.selectedIndex].value;
+				var sVipUrl = getParams('url');
+				var oWin = document.getElementById("play");
+				if (sVipUrl.length>0){
+						oWin.src=sJK + sVipUrl;
+				}
+		}
+	</script>
+
+	<style>
+		input,select{height:2em; vertical-align:middle;}
+	</style>
+</head>
+
+<body onload="onPlay()" bgcolor="#000000">
+
+<div>
+	<form method="post" action="">
+
+	<div style="vertical-align:top;">
+	<select name="jk" id="jk" onchange="onPlay()">
+	<option value="http://z1.m1907.cn/?jx=" >不能播点我</option>
+<option value="http://v.d9y.net/vip/?url=" >优选选择</option>
+<option value="https://www.cuan.la/?url=" >切换线路01</option>
+<option value="http://yun.mt2t.com/yun?url=" >切换线路02</option>
+<option value="http://api.myzch.cn/?url=" >切换线路03</option>
+<option value="https://www.playm3u8.cn/jiexi.php?url=" >切换线路04</option>
+<option value="https://jx.okokjx.com/okokjiexi/jiexi.php?url=" >切换线路05</option>
+<option value="http://vip.jlsprh.com/index.php?url=" >切换线路06</option>
+<option value="http://at520.cn/jx/?url=" >切换线路07</option>
+<option value="http://beaacc.com/api.php?url=" >切换线路08</option>
+<option value="https://www.nxflv.com/?url=" >切换线路09</option>
+<option value="http://api.baiyug.vip/index.php?url=" >切换线路10</option>
+<option value="https://z1.m1907.cn/?a=1&jx=" >切换线路11</option>
+<option value="http://jx.nw3w.cn/?url=" >切换线路12</option>
+<option value="https://jx.ab33.top/vip/?url=" >切换线路13</option>
+<option value="https://jx.wslmf.com/?url=" >切换线路14</option>
+<option value="http://vip.jlsprh.com/?url=" >切换线路15</option>
+<option value="https://jx.618g.com/?url=" >切换线路16</option>
+	</select>
+
+	<input type="hidden" name="vipurl" id="vipurl" value="getParams('url')">
+
+	<input type="text" onfocus="this.select();" onmouseup="this.select();" readonly="readonly" value="url1" >
+	</div>
+
+	</form>
+</div>
+
+<iframe src="" name="play" id="play" width="100%" height="90%" frameborder="0" marginheight="0" marginwidth="0" allowfullscreen="true" scrolling="no"></iframe>
+
+</body>
+</html>
