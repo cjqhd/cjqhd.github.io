@@ -8,8 +8,29 @@
 	<meta name="renderer" content="webkit">
 	<meta http-equiv="X-UA-Compatible" content="IE=11" />
 	<title>会员盒子 http://vipbox.ml 爱奇艺 腾讯 优酷 VIP视频免费观看</title>
-		
-	<script language="javascript" type="text/javascript">
+
+	<style>
+		input,select{height:2em; vertical-align:middle;}
+	</style>
+
+		<script language="javascript" type="text/javascript">
+
+			function getParams(paras) {
+				var url = decodeURI(location.href);
+				var paraString = url.substring(url.indexOf("?") + 1, url.length).split("&");
+				var returnValue;
+				for (i = 0; i < paraString.length; i++) {
+					var tempParas = paraString[i].split('=')[0];
+					var parasValue = paraString[i].substring(paraString[i].indexOf("=") + 1);
+					if (tempParas === paras) returnValue = parasValue;
+				}
+				if (typeof(returnValue) == "undefined") {
+					return "";
+				} else {
+					return returnValue;
+				}
+			}
+			
 		function onPlay(){
 				var oJK = document.getElementById("jk");
 				var sJK=oJK.options[oJK.selectedIndex].value;
@@ -19,28 +40,16 @@
 						oWin.src=sJK + sVipUrl;
 				}
 		}
-	</script>
+		
+		</script>
 
-	<style>
-		input,select{height:2em; vertical-align:middle;}
-	</style>
+		
 </head>
 
 <body onload="onPlay()" bgcolor="#000000">
 
 		<script language="javascript" type="text/javascript">
-		//倒计时
-		window.onload = function(){
-			var i = 3;
-			var out=document.getElementById('out');
-			var timer = setInterval(function(){
-				if(i== -1){
-				}else{
-				out.innerHTML=i;
-				--i;
-				}
-			},1000);
-			}
+
 			//判断微信
 			function is_weixin() {
 				var ua = navigator.userAgent.toLowerCase();
@@ -79,23 +88,9 @@
 			} else {
 				//视频解析接口
 				//setTimeout(function () { this.location.href = "http://mv-vipbox.eu5.net/api.php?url=" + getParams('url') },3000);
-				prompt("微信关注 “会员盒子” 发现更多好视频！","会员盒子");
+				
 			}
-			function getParams(paras) {
-				var url = decodeURI(location.href);
-				var paraString = url.substring(url.indexOf("?") + 1, url.length).split("&");
-				var returnValue;
-				for (i = 0; i < paraString.length; i++) {
-					var tempParas = paraString[i].split('=')[0];
-					var parasValue = paraString[i].substring(paraString[i].indexOf("=") + 1);
-					if (tempParas === paras) returnValue = parasValue;
-				}
-				if (typeof(returnValue) == "undefined") {
-					return "";
-				} else {
-					return returnValue;
-				}
-			}
+
 		</script>
 		
 <div>
